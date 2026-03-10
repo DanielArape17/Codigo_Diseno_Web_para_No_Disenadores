@@ -1,0 +1,153 @@
+/* =========================================
+  ESTADO INICIAL: PANTALLA DIVIDIDA
+========================================= */
+
+body {
+  background-color: #0f172a; /* Slate 900 */
+  color: #f8fafc;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  height: 100vh;
+}
+
+.pantalla-dividida {
+  display: flex;
+  height: 100%;
+}
+
+.panel {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #1e293b;
+}
+
+.panel h2 {
+  margin-bottom: 8px;
+}
+
+.panel p {
+  color: #94a3b8;
+  margin-top: 0;
+}
+
+.componentes {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 400px; /* Ancho ajustado para que la caja de código respire */
+}
+
+/* =========================================
+  ❌ LADO MALO: CAOS HEXADECIMAL
+========================================= */
+
+.btn-hex {
+  background-color: #3b82f6; 
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+.btn-hex:hover {
+  background-color: #1e40af; 
+}
+
+.tag-hex {
+  background-color: #1e3a8a; 
+  color: #bfdbfe; 
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* =========================================
+  ✅ LADO BUENO: MATEMÁTICAS EN HSL
+========================================= */
+
+:root {
+  --h-marca: 217;       
+  --s-marca: 90%;       
+}
+
+.btn-hsl {
+  background-color: hsl(var(--h-marca), var(--s-marca), 60%); 
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+.btn-hsl:hover {
+  background-color: hsl(var(--h-marca), var(--s-marca), 50%); 
+}
+
+.tag-hsl {
+  background-color: hsl(var(--h-marca), var(--s-marca), 20%); 
+  color: hsl(var(--h-marca), var(--s-marca), 85%); 
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* =========================================
+  📦 CAJITAS DE CÓDIGO (Referencia Visual)
+========================================= */
+
+.caja-codigo {
+  background-color: #1e293b; 
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 16px;
+  width: 80%;
+  margin-top: 16px;
+  text-align: left; /* Obliga a alinear a la izquierda */
+  overflow-x: auto; /* Scroll horizontal si es necesario */
+}
+
+/* La nueva regla a prueba de formateadores */
+.linea-codigo {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  white-space: nowrap; /* Evita que el texto salte a la línea de abajo rompiendo el código */
+}
+
+/* Syntax Highlighting */
+.caja-codigo .comentario {
+  color: #64748b;
+  font-style: italic;
+}
+
+.caja-codigo .hex {
+  color: #f87171; 
+}
+
+.caja-codigo .hsl-val {
+  color: #38bdf8; 
+  font-weight: bold;
+}
+
+.caja-codigo .luz {
+  color: #a3e635; 
+  font-weight: bold;
+}

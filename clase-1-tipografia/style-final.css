@@ -1,0 +1,46 @@
+/* =========================================
+  ESTADO FINAL: ARMONÍA MATEMÁTICA (DARK MODE)
+========================================= */
+
+/* Creamos variables para nuestras 2 fuentes elegidas */
+:root {
+  --font-display: "Fira Code", monospace; /* Voz técnica/código para títulos */
+  --font-body: "Inter", sans-serif; /* Voz limpia/usable para lectura */
+}
+
+body {
+  /* Aplicamos la regla visual: NUNCA usar #000000 ni #FFFFFF */
+  background-color: #0f172a; /* Slate 900: Un azul súper oscuro, elegante y profundo */
+  color: #f8fafc; /* Slate 50: Un blanco roto que no quema los ojos */
+
+  padding: 40px;
+  font-family: var(
+    --font-body
+  ); /* Aplicamos la fuente limpia a todo por defecto */
+}
+
+/* 1. Jerarquía Tipográfica Matemática en REM (Escala 1.250x) */
+h1,
+h2 {
+  font-family: var(--font-display); /* Títulos con fuente técnica */
+}
+
+h1 {
+  font-size: 3.05rem; /* Reemplaza a los 37px rígidos */
+  margin-bottom: 0.5rem; /* Pequeño respiro debajo del título */
+}
+
+h2 {
+  font-size: 2.44rem; /* Reemplaza a los 29px rígidos */
+  color: #94a3b8; /* Slate 400: Le bajamos el contraste al subtítulo para jerarquía visual */
+}
+
+/* 2. Auditoría y Reglas de Legibilidad Web */
+p {
+  font-size: 1rem; /* Base elástica de 16px */
+  color: #cbd5e1; /* Slate 300: Texto de párrafo ligeramente más apagado para no cansar */
+
+  line-height: 1.5; /* Le damos aire entre las líneas para que respire */
+  max-width: 70ch; /* Limitamos el ancho a 70 caracteres. Evita el "partido de tenis" visual */
+  margin-top: 1.5rem;
+}

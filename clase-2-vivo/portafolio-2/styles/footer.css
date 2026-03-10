@@ -1,0 +1,154 @@
+/* =========================================
+  8. FOOTER MINIMALISTA NEÓN STYLES
+========================================= */
+.footer-neon {
+  background-color: var(--bg-card); /* hsl(270, 30%, 8%) - Ligeramente despegado del fondo */
+  border-top: 1px solid var(--border-color);
+  padding: var(--space-24) var(--space-80) ;
+  margin-top: var(--space-80);
+}
+
+.footer-cta-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alineado a la izquierda para un look editorial */
+  margin-bottom: var(--space-32);
+}
+
+.footer-heading {
+  font-size: clamp(2rem, 4vw, 3.5rem); /* Crece y se encoge fluido */
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.2;
+  margin-bottom: var(--space-32);
+  letter-spacing: -1px;
+}
+
+/* Reutilizamos o creamos el texto degradado de tu Hero */
+.text-gradient {
+  background: linear-gradient(90deg, var(--brand-color), hsl(290, 80%, 70%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* --- EL ENLACE DE CORREO GIGANTE --- */
+.footer-email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-16);
+  font-size: clamp(1.5rem, 3vw, 2.5rem); /* Texto enorme */
+  font-weight: 300; /* Letra delgada (Outfit Light) para contraste elegante */
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent; /* Preparado para la animación */
+  padding-bottom: 8px;
+  transition: all 0.4s ease;
+}
+
+.footer-email-link svg {
+  color: var(--brand-color);
+  transition: transform 0.4s ease;
+}
+
+/* Microinteracción al pasar el mouse */
+.footer-email-link:hover {
+  color: var(--text-main);
+  border-bottom-color: var(--brand-color); /* Se subraya de morado */
+}
+
+.footer-email-link:hover svg {
+  transform: translateX(12px) rotate(-45deg); /* La flecha dispara hacia arriba-derecha */
+}
+
+/* --- PARTE INFERIOR (GRID) --- */
+.footer-bottom-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-32);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.footer-logo {
+  font-family: 'Fira Code', monospace; /* Tu toque técnico */
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+
+.footer-logo .dot {
+  color: var(--brand-color);
+}
+
+.copyright {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-social-links {
+  display: flex;
+  gap: var(--space-24);
+}
+
+.social-text {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.social-text:hover {
+  color: var(--brand-color);
+}
+
+/* =========================================
+  RESPONSIVE FOOTER NEÓN (MÓVILES)
+========================================= */
+@media (max-width: 768px) {
+  
+  .footer-neon {
+    padding-top: var(--space-64);
+  }
+
+  .footer-cta-top {
+    align-items: center;
+    text-align: center;
+    margin-bottom: var(--space-64);
+  }
+
+  /* Evita que un correo muy largo rompa el ancho del celular */
+  .footer-email-link {
+    font-size: 1.4rem; /* Forzamos un tamaño seguro */
+    word-break: break-all; /* Si el correo es larguísimo, lo rompe y lo baja */
+    gap: var(--space-8);
+  }
+
+  .footer-email-link svg {
+    width: 24px; /* Achicamos la flecha un poco */
+    height: 24px;
+  }
+
+  /* Apilamos la marca y las redes sociales */
+  .footer-bottom-grid {
+    flex-direction: column-reverse; /* Redes arriba, Copyright abajo */
+    align-items: center;
+    gap: var(--space-32);
+    text-align: center;
+  }
+
+  .footer-social-links {
+    width: 100%;
+    justify-content: center;
+    gap: var(--space-32);
+  }
+}

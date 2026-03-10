@@ -1,0 +1,116 @@
+/* =========================================
+  6. EXPERIENCIA Y EDUCACIÓN (Timeline)
+========================================= */
+.seccion-experiencia {
+  padding: var(--space-16) var(--space-24);
+  border-top: 1px solid var(--border-color); /* Línea divisoria sutil arriba */
+}
+
+/* Layout de 2 columnas para escritorio */
+.grid-2-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-64);
+}
+
+.titulo-con-icono {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  color: var(--text-main);
+  margin-bottom: var(--space-32);
+  font-family: 'Fraunces', serif;
+  font-size: var(--text-2xl); /* 3.157rem en tu escala Perfect Fourth */
+}
+
+.titulo-con-icono svg {
+  color: var(--brand-color); /* Los iconos de título nacen iluminados */
+}
+
+/* 💡 TÁCTICA: La Línea del Timeline */
+.timeline-wrapper {
+  /* Al poner el borde a la izquierda, creamos una línea infinita automática */
+  border-left: 2px solid var(--border-color);
+  padding-left: var(--space-64); /* Empujamos el texto hacia la derecha */
+  margin-left: var(--space-16); /* Dejamos espacio a la izquierda para el punto */
+}
+
+/* La tarjeta invisible */
+.timeline-item {
+  position: relative; /* CRÍTICO: Para anclar los puntos después */
+  margin-bottom: var(--space-32);
+  transition: transform 0.3s ease;
+}
+
+/* El último elemento no necesita margen inferior */
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* --- TEXTOS DEL TIMELINE --- */
+.timeline-fecha {
+  display: inline-block;
+  color: var(--brand-color); /* Fecha en morado neón */
+  font-family: 'Fira Code', monospace; /* Dato duro = Fuente técnica */
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-8);
+  padding: 4px 12px;
+  background-color: hsla(270, 80%, 60%, 0.1); /* Píldora sutil */
+  border-radius: 99px;
+}
+
+.timeline-titulo {
+  color: var(--text-main);
+  font-size: var(--text-lg); /* 1.777rem */
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.timeline-lugar {
+  color: var(--text-muted);
+  font-size: var(--text-base); /* 1rem */
+}
+
+/* 💡 TÁCTICA: Los Puntos en la Línea (Pseudo-elementos) */
+.timeline-item::before {
+  content: ''; /* Obligatorio para que exista */
+  position: absolute; /* Lo sacamos del flujo normal */
+  
+  /* Matemáticas para centrar el punto en la línea: 
+  Padding (32px) + Borde (2px) = 34px a la izquierda. 
+  Le restamos la mitad del ancho del punto para centrarlo. */
+  left: -39px; 
+  top: 4px; 
+  
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--bg-base); /* Centro oscuro como el fondo */
+  border: 2px solid var(--brand-color); /* Anillo morado */
+  transition: all 0.3s ease;
+}
+
+/* --- MICROINTERACCIÓN --- */
+.timeline-item:hover {
+  transform: translateX(8px); /* Todo el bloque se desliza a la derecha */
+}
+
+.timeline-item:hover::before {
+  background-color: var(--brand-color); /* El punto se rellena */
+  box-shadow: 0 0 15px var(--brand-glow); /* Emite luz */
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .grid-2-columnas {
+    grid-template-columns: 1fr; /* Apila experiencia sobre educación en móviles */
+  }
+}
+
+@media (min-width: 769px) {
+  .seccion-experiencia {
+    padding: var(--space-64);
+  }
+}

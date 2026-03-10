@@ -1,0 +1,129 @@
+/* =========================================
+  7. FORMULARIO PREMIUM (Estilos Base)
+========================================= */
+.seccion-contacto {
+  padding: var(--space-64);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-center { text-align: center; }
+
+/* La tarjeta que envuelve el formulario */
+.contenedor-formulario {
+  max-width: 700px;
+  background-color: var(--bg-card); 
+  padding: var(--space-32);
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+}
+
+.formulario-premium {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.form-fila {
+  display: flex;
+  gap: var(--space-24);
+}
+
+.grupo-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; 
+  width: 100%;
+}
+
+.label-premium {
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* --- LA CAJA DE TEXTO (Input y Textarea) --- */
+.input-premium {
+  width: 100%;
+  box-sizing: border-box; /* CRÍTICO: Mantiene el padding por dentro */
+  background-color: var(--bg-base); /* Color oscuro para efecto hundido */
+  color: var(--text-main);
+  font-family: inherit; 
+  font-size: 1rem;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color); 
+  transition: all 0.3s ease;
+}
+
+.input-premium::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.textarea-premium {
+  resize: vertical; /* UX: Evita que el usuario rompa el ancho del diseño */
+  min-height: 120px;
+}
+
+/* --- EL BOTÓN DE ENVÍO (Reseteado) --- */
+.btn-submit {
+  width: 100%; 
+  margin-top: var(--space-8);
+  padding: 16px;
+  border-radius: 12px;
+  background-color: var(--brand-color);
+  color: white; /* O tu color de texto principal */
+  font-size: 1.1rem;
+  font-weight: 600;
+  
+  /* Reseteo del navegador */
+  border: none; 
+  cursor: pointer; 
+  font-family: inherit; 
+  box-sizing: border-box;
+  
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: hsl(var(--h-marca), var(--s-marca), 50%); /* Se oscurece un poco */
+  transform: translateY(-2px); /* Levitación sutil */
+}
+
+/* --- MICROINTERACCIÓN: EL ESTADO :FOCUS --- */
+
+.input-premium:focus {
+  outline: none; /* 1. Matamos el borde azul de Chrome/Safari */
+  
+  border-color: var(--brand-color); /* 2. Encendemos nuestro color */
+  
+  /* 3. Creamos un resplandor de neón con el color de la marca */
+  box-shadow: 0 0 0 4px var(--brand-glow);
+  
+  /* 4. Feedback visual: Aclaramos el fondo 2% */
+  background-color: hsla(var(--h-marca), var(--s-marca), 60%, 0.02); 
+}
+
+/* =========================================
+  RESPONSIVE FORMULARIO (MÓVILES)
+========================================= */
+@media (max-width: 768px) {
+  
+  .seccion-contacto {
+    padding: var(--space-64) 0;
+  }
+
+  .contenedor-formulario {
+    padding: var(--space-24);
+    border-radius: 16px; /* Curvas más suaves para pantallas pequeñas */
+  }
+
+  /* Rompemos la fila: Nombre y Correo se apilan verticalmente */
+  .form-fila {
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+}

@@ -1,0 +1,119 @@
+/* =========================================
+  3. PROYECTOS (Tarjetas Dashboard Premium)
+========================================= */
+.seccion-proyectos {
+  padding: var(--space-64);
+  position: relative;
+  z-index: 2; /* Nos aseguramos de que esté sobre cualquier luz de fondo */
+}
+
+.titulo-centrado {
+  text-align: center;
+  font-size: 2.5rem; /* O var(--text-3xl) si ya implementaste la escala */
+  margin-bottom: var(--space-64);
+  color: var(--text-main);
+}
+
+.grid-proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo automático */
+  gap: var(--space-32);
+}
+
+
+
+/* La Tarjeta Base (Plana y limpia) */
+.tarjeta-proyecto {
+  background-color: var(--bg-card); /* hsl(270, 30%, 8%) */
+  border-radius: 20px; 
+  border: 1px solid var(--border-color); 
+  padding: 24px; 
+  transition: all 0.3s ease;
+}
+
+/* El 'hueco' de la imagen */
+.tarjeta-imagen {
+  height: 250px;
+  background-color: var(--bg-base); /* Más oscuro que la tarjeta */
+  border-radius: 12px;
+  margin-bottom: var(--space-24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+/* Microinteracción de Neón */
+.tarjeta-proyecto:hover {
+  border-color: var(--brand-color); /* El borde se enciende */
+  transform: translateY(-5px); /* Salto sutil de elevación */
+  box-shadow: 0 10px 30px var(--brand-glow); /* Resplandor inferior del mismo color */
+}
+
+/* Tipografía de la Tarjeta */
+.tarjeta-titulo {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.tarjeta-desc {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Etiquetas Tecnológicas Premium */
+.stack-tecnologico {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-tech {
+  background-color: hsla(270, 80%, 60%, 0.1); /* Morado súper transparente */
+  color: var(--brand-color); /* Texto morado brillante */
+  /*
+    background-color: hsla(var(--h-marca), var(--s-marca), 15%, 0.4);
+    color: hsl(var(--h-marca), var(--s-marca), 80%); 
+  */
+  padding: 6px 12px;
+  border-radius: 100px; /* Forma de píldora */
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: default; /* Indica que no es un botón clickeable */
+}
+
+/* =========================================
+  📱 RESPONSIVE PROYECTOS (MÓVILES)
+========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. Reducimos el respiro masivo de la sección */
+  .seccion-proyectos {
+    padding: var(--space-16) var(--space-24);
+  }
+
+  /* 2. Achicamos el título principal para que no se asfixie */
+  .titulo-centrado {
+    font-size: 2rem; 
+    margin-bottom: var(--space-32);
+  }
+
+  /* 3. Ajustamos el espacio interno de la tarjeta para ganar lectura */
+  .tarjeta-proyecto {
+    padding: 20px; 
+  }
+
+  /* 4. Hacemos la foto más corta en móviles para que el texto suba a la vista */
+  .tarjeta-imagen {
+    height: 180px; 
+    margin-bottom: var(--space-16);
+  }
+
+  /* 5. Ajustamos el título del proyecto */
+  .tarjeta-titulo {
+    font-size: 1.25rem;
+  }
+}

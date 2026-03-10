@@ -1,0 +1,226 @@
+/* =========================================
+  2. HERO (2 Columnas)
+========================================= */
+.hero {
+  /* 💡 EL TRUCO MAESTRO: Centrado matemático perfecto */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-64);
+  position: relative; 
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* Le damos más espacio al texto que a la foto */
+  gap: var(--space-64);
+  align-items: center;
+  width: 100%;
+  z-index: 2; /* Por encima de las luces */
+}
+
+/* --- TEXTOS (Columna Izquierda) --- */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-greeting {
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: var(--space-8);
+}
+
+.hero-title {
+  /* 💡 Táctica: Tipografía Fluida */ 
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--space-24);
+  max-width: min-content;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--brand-color), hsl(290, 80%, 70%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block; 
+}
+
+.hero-bio {
+  color: var(--text-muted);
+  max-width: 50ch;
+  margin-bottom: var(--space-32);
+  line-height: 1.7;
+}
+
+/* --- TÁCTICA: LUCES AMBIENTALES (GLOWS) --- */
+.glow-bg {
+  position: absolute;
+  width: 50vw; 
+  max-width: 600px;
+  height: 50vw;
+  max-height: 600px;
+  background-color: var(--brand-glow);
+  border-radius: 50%;
+  filter: blur(120px); /* Desenfoque masivo */
+  z-index: 0;
+  pointer-events: none; 
+}
+.glow-top { top: -10%; right: -5%; }
+.glow-bottom { bottom: -10%; left: -5%; }
+
+/* --- BOTONES Y REDES --- */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid var(--brand-color); /* Borde sutil */
+  color: var(--brand-color);
+  padding: 14px 32px;
+  border-radius: 99px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-color);
+  color: var(--text-main);
+}
+
+.social-icons { display: flex; gap: 16px; }
+
+.icon-circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-color);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.icon-circle:hover {
+  background-color: var(--brand-color);
+  color: var(--text-main);
+}
+
+/* --- FOTO (Columna Derecha) --- */
+.hero-image-wrapper {
+  display: flex;
+  justify-content: flex-end; /* La empuja a la derecha */
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 4/5; 
+  background-color: var(--bg-card);
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-family: "Fira Code", monospace;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  
+  /* 💡 Microinteracción Premium */
+  transform: rotate(3deg);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+.hero-image:hover {
+  transform: rotate(0deg) scale(1.02);
+  border-color: var(--brand-color);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+/* =========================================
+  RESPONSIVE HERO (TABLETS: 769px a 1024px)
+========================================= */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr; /* Mitad y mitad equitativo */
+    gap: var(--space-32);
+  }
+
+  .hero-title {
+    font-size: 2.8rem; /* Reducimos el tamaño gigante de PC */
+    max-width: 100%; /* 💡 FUNDAMENTAL: Quitamos el min-content que rompe el diseño */
+  }
+
+  .hero-bio {
+    max-width: 100%; /* Aprovecha toda su columna */
+  }
+
+  .hero-actions {
+    flex-wrap: wrap; /* Evita que los botones choquen con la foto */
+  }
+}
+
+/* =========================================
+  RESPONSIVE HERO (MÓVILES: Hasta 768px)
+========================================= */
+@media (max-width: 768px) {
+  
+  .hero {
+    /* 💡 FUNDAMENTAL: Quitamos el 100vh para que no quede un hueco vacío masivo al ocultar la foto */
+    padding: var(--space-16) var(--space-24);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr; /* Una sola columna */
+    gap: var(--space-32);
+    text-align: center; 
+  }
+
+  .hero-content {
+    align-items: center; /* Centra todo el contenido verticalmente */
+  }
+
+  .hero-title {
+    font-size: 2.5rem; 
+    max-width: 100%; /* Sobrescribimos el min-content de PC */
+    line-height: 1.15;
+    margin-bottom: var(--space-16);
+  }
+
+  .hero-bio {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column; /* Apila el botón y las redes */
+    width: 100%;
+    gap: var(--space-16);
+  }
+
+  .btn-primary {
+    width: 100%; /* Botón gigante para móviles */
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .social-icons {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* 💡 OCULTAMOS LA FOTO EN MÓVILES COMO PEDISTE */
+  .hero-image-wrapper {
+    display: none;
+  }
+}

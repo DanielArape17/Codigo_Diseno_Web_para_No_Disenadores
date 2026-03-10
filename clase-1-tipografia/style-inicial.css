@@ -1,0 +1,28 @@
+/* =========================================
+  ESTADO INICIAL: EL DESASTRE TIPOGRÁFICO
+  ========================================= */
+
+body {
+  background-color: #1a1a1a;
+  color: #eeeeee;
+  padding: 40px;
+}
+
+/* Falta 1: Secuestro Tipográfico y Tamaños Inventados en píxeles */
+h1 {
+  font-family: "Comic Sans MS", cursive;
+  font-size: 37px; /* Tamaño rígido sin lógica */
+}
+
+h2 {
+  font-family: "Impact", sans-serif;
+  font-size: 29px; /* Tamaño rígido sin lógica */
+}
+
+p {
+  font-family: "Times New Roman", serif;
+  font-size: 14px; /* Texto muy pequeño para lectura web */
+
+  /* Falta 2: Faltan reglas de legibilidad. 
+  El texto cruzará de lado a lado en un monitor grande */
+}

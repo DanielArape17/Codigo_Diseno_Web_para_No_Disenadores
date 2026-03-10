@@ -1,0 +1,170 @@
+/* =========================================
+  5. SKILLS GRID (Mejorado)
+========================================= */
+.seccion-skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-16) var(--space-24);
+  font-family: 'Manrope', sans-serif; /* Tipografía general del cuerpo */
+}
+
+
+.encabezado-centrado {
+  text-align: center;
+  color: var(--text-main);
+  margin-bottom: var(--space-16);
+  font-family: 'Fraunces', serif; /* Tipografía para destacar el título */
+  font-size: 2.5rem; 
+}
+
+.subtitulo-centrado {
+  text-align: center;
+  color: var(--text-muted);
+  max-width: 60ch;
+  line-height: 1.6;
+}
+
+/* Usamos Flexbox para centrar las tarjetas */
+.grid-skills {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-evenly;
+  padding: var(--space-16) var(--space-24);
+  gap: var(--space-32)
+}
+
+/* Contenedor que agrupa la caja + el texto de abajo */
+.skill-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+/* Elevamos todo el bloque al pasar el mouse */
+.skill-wrapper:hover {
+  transform: translateY(-8px);
+}
+
+/* La Caja Oscura (El Squircle) */
+.skill-box {
+  width: 140px;
+  height: 140px;
+  background-color: var(--bg-card); 
+  border-radius: 32px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  /* Borde sutil para separar la caja del fondo */
+  border: 1px solid var(--text-muted, 0.8); 
+  box-shadow: 0 10px 25px hsl(var(--h-marca), var(--s-marca), var(--l-marca), 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Interacción de Neón en la caja */
+.skill-wrapper:hover .skill-box {
+  border-color: var(--brand-color);
+  box-shadow: 0 10px 25px var(--brand-glow);
+}
+
+/* 
+.skill-box {
+  /* Borde sutil para separar la caja del fondo 
+  border: 1px solid rgba(255, 255, 255, 0.08); //
+  box-shadow: 0 10px 30px hsla(0, 0%, 0%, 0.2); 
+}
+
+.skill-wrapper:hover .skill-box {
+  border-color: var(--brand-color);
+  box-shadow: 0 10px 25px var(--brand-glow);
+}
+*/
+
+/* El Icono */
+.skill-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--text-main); 
+  transition: color 0.3s ease;
+}
+
+.skill-wrapper:hover .skill-icon {
+  color: var(--brand-color); 
+}
+
+/* El Nivel adentro de la caja */
+.skill-pct {
+  color: var(--text-muted); 
+  font-weight: 700;
+  font-size: 0.85rem; /* Ajustado para texto en lugar de números */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* El Nombre de la tecnología por FUERA de la caja */
+.skill-name {
+  color: var(--text-main); /* Cambiado a neutro para mayor elegancia */
+  font-weight: 600;
+  font-size: var(--text-base);
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+  📱 RESPONSIVE SKILLS (MÓVILES)
+========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. Reducimos el padding superior/inferior para que no haya tanto vacío */
+  .seccion-skills {
+    padding: var(--space-32) 0;
+  }
+
+  /* 2. Achicamos el título para que no choque ni se corte */
+  .encabezado-centrado {
+    font-size: 2rem; 
+    margin-bottom: var(--space-16);
+  }
+
+  /* 3. Ajustamos el subtítulo para mejor lectura */
+  .subtitulo-centrado {
+    font-size: 0.95rem;
+    margin-bottom: var(--space-32);
+  }
+
+  /* 5. LA MAGIA: Achicamos el Squircle proporcionalmente */
+  .skill-box {
+    width: 120px; 
+    height: 120px;
+    border-radius: 24px; /* Mantenemos la forma redondeada pero un poco más pequeña */
+    gap: 8px; /* Menos espacio entre el icono y la palabra */
+  }
+
+  /* 6. Ajustamos los elementos internos para que respiren en su nueva cajita */
+  .skill-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .skill-pct {
+    font-size: 0.75rem; /* Reducimos el texto "AVANZADO" */
+  }
+
+  .skill-name {
+    font-size: 0.95rem; /* Reducimos ligeramente el nombre de la tecnología */
+  }
+}
+
+@media (min-width: 769px) {
+  .seccion-skills {
+    /* En PC, le damos los 64px de espacio a los lados para que se alinee con el resto de la página */
+    padding: var(--space-64)
+  }
+  .grid-skills {
+    padding: 0;
+  }
+}

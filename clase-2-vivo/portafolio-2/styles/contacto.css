@@ -1,0 +1,133 @@
+/* =========================================
+   7. SECCIÓN DE CONTACTO DIRECTO (BENTO)
+========================================= */
+.seccion-contacto {
+  padding: var(--space-80) 0;
+}
+
+.contacto-header {
+  margin-bottom: var(--space-64);
+}
+
+.contacto-header .titulo-seccion {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: var(--space-16);
+  color: var(--text-main);
+  text-align: center;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--brand-color), hsl(290, 80%, 70%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* El Grid que se adapta solo */
+.contacto-bento-grid {
+  display: grid;
+  /* 💡 TRUCO: minmax de 280px para evitar el bug del celular que vimos en proyectos */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-24);
+  max-width: 900px; /* Evita que las tarjetas se estiren demasiado en PC */
+  margin: 0 auto;
+}
+
+/* --- LA TARJETA INTERACTIVA --- */
+.contacto-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  background-color: var(--bg-card); /* hsl(270, 30%, 8%) */
+  border: 1px solid var(--border-color);
+  padding: var(--space-24);
+  border-radius: 20px;
+  text-decoration: none; /* Quitamos la línea de enlace */
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transición rebotante premium */
+}
+
+/* El contenedor del ícono */
+.contacto-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background-color: var(--bg-base); /* Un hueco más oscuro */
+  color: var(--brand-color); /* Icono en color neón */
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.contacto-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contacto-plataforma {
+  color: var(--text-main);
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.contacto-detalle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* --- MICROINTERACCIONES --- */
+.contacto-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--brand-color);
+  box-shadow: 0 15px 30px var(--brand-glow);
+  background-color: hsla(270, 80%, 60%, 0.05); /* Tinte ligero al fondo */
+}
+
+.contacto-card:hover .contacto-icon-wrapper {
+  background-color: var(--brand-color);
+  color: var(--text-main);
+  transform: scale(1.1) rotate(5deg); /* Efecto lúdico */
+}
+
+/* =========================================
+  RESPONSIVE CONTACTO DIRECTO
+========================================= */
+@media (max-width: 768px) {
+  
+  .seccion-contacto {
+    padding: var(--space-16) var(--space-24);
+  }
+
+  .contacto-header {
+    margin-bottom: var(--space-48);
+  }
+
+  .contacto-header .titulo-seccion {
+    font-size: 2rem;
+  }
+
+  .contacto-card {
+    padding: var(--space-16);
+    gap: var(--space-16);
+  }
+
+  /* Reducimos un poco el ícono para que quepa bien el texto */
+  .contacto-icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  .contacto-plataforma {
+    font-size: 1.1rem;
+  }
+
+  .contacto-detalle {
+    font-size: 0.85rem; /* Ajuste para correos electrónicos largos */
+    word-break: break-all; /* Evita que textos largos rompan la pantalla */
+  }
+}

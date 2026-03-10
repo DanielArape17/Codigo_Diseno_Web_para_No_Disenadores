@@ -1,0 +1,77 @@
+/* =========================================
+  ESTADO INICIAL: EL PORTAFOLIO ASFIXIADO
+========================================= */
+
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px; /* Medida aleatoria */
+}
+
+.contenedor-portafolio {
+  width: 100%;
+  max-width: 600px;
+}
+
+h1, h2, h3, p {
+  margin: 0; /* Reseteamos márgenes para ver el caos */
+}
+
+/* ❌ ERROR 1: Elementos lógicos separados aleatoriamente */
+.seccion-hero h1 {
+  margin-bottom: 12px;
+  font-size: 2.5rem;
+}
+.seccion-hero .rol {
+  margin-bottom: 22px;
+  color: #38bdf8;
+  font-weight: 600;
+}
+.seccion-hero .bio {
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* ❌ ERROR 2: Secciones distintas que están muy pegadas */
+.seccion-proyectos {
+  margin-top: 35px; /* Debería ser un espacio masivo para separar contextos */
+}
+.seccion-proyectos h2 {
+  margin-bottom: 18px;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 10px;
+}
+
+/* ❌ ERROR 3: Tarjeta asfixiada por dentro y por fuera */
+.tarjeta-proyecto {
+  background-color: #1e293b;
+  border-radius: 8px;
+  border: 1px solid #334155;
+}
+
+.contenido-tarjeta {
+  padding: 15px; /* Muy poco espacio interno */
+}
+
+.contenido-tarjeta h3 {
+  margin-bottom: 7px;
+}
+.contenido-tarjeta p {
+  margin-bottom: 14px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.btn-primario {
+  background-color: #38bdf8;
+  color: #0f172a;
+  font-weight: 600;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

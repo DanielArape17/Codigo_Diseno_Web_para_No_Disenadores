@@ -1,0 +1,419 @@
+/* =========================================
+   1. VARIABLES DE SISTEMA (NEON TECH)
+   ========================================= */
+:root {
+  /* Paleta de Colores Cyberpunk */
+  --neon-cyan: hsl(190, 100%, 50%); /* Cyan brillante puro */
+  --neon-glow: hsla(190, 100%, 50%, 0.5); /* Resplandor cyan transparente */
+  
+  --bg-exterior: hsl(220, 50%, 8%); /* Azul marino casi negro para el fondo total */
+  --bg-panel: hsl(220, 40%, 12%); /* Fondo de las tarjetas/paneles */
+  --bg-input: hsl(220, 30%, 16%); /* Fondo más claro para inputs y barras */
+  
+  --text-blanco: hsl(0, 0%, 100%);
+  --text-gris: hsl(215, 20%, 70%);
+
+  /* Sistema de Espaciado Matemático (8px) */
+  --space-8: 0.5rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --space-48: 3rem;
+  --space-64: 4rem;
+}
+
+/* =========================================
+   2. RESET Y BASE
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-exterior);
+  /* Un sutil gradiente radial de fondo para dar profundidad */
+  background-image: radial-gradient(circle at 50% 0%, hsl(220, 50%, 15%) 0%, var(--bg-exterior) 70%);
+  color: var(--text-blanco);
+  min-height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   3. NAVEGACIÓN LATERAL (SIDEBAR)
+   ========================================= */
+#sidebar {
+  position: fixed;
+  left: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.nav-menu {
+  list-style: none;
+  background-color: var(--bg-panel);
+  padding: var(--space-24) var(--space-8);
+  border-radius: 50px; /* Forma de píldora */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  /* Borde iluminado muy sutil y sombra difuminada */
+  border: 1px solid hsla(190, 100%, 50%, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link {
+  color: var(--text-gris);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Táctica: Estado Activo y Hover con Luz Neón */
+.nav-link:hover, 
+.nav-link.activo {
+  color: var(--bg-exterior); /* Icono oscuro... */
+  background-color: var(--neon-cyan); /* ...sobre fondo cyan */
+  box-shadow: 0 0 15px var(--neon-glow), 0 0 30px var(--neon-glow); /* Doble resplandor */
+  transform: scale(1.1);
+}
+
+/* =========================================
+   4. CONTENEDOR PRINCIPAL (SPA)
+   ========================================= */
+#main-content {
+  flex: 1;
+  margin-left: 100px; /* Hacemos espacio para el sidebar */
+  padding: var(--space-48) var(--space-24);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Táctica SPA: Ocultamos todas las secciones por defecto */
+.panel-seccion {
+  display: none; /* Se ocultan */
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--bg-panel);
+  border-radius: 24px;
+  padding: var(--space-64) var(--space-48);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  border: 1px solid hsla(215, 20%, 70%, 0.05);
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* Solo la sección visible se muestra (Controlado por JS luego) */
+.panel-seccion.visible {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Utilidades de Texto */
+.texto-cyan {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 15px var(--neon-glow);
+}
+
+.titulo-seccion {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-8);
+  text-align: center;
+}
+
+.descripcion-seccion {
+  color: var(--text-gris);
+  text-align: center;
+  margin-bottom: var(--space-48);
+  max-width: 600px;
+  align-self: center;
+}
+
+/* =========================================
+   5. SECCIÓN: INICIO (HERO)
+   ========================================= */
+#home {
+  align-items: center;
+  text-align: center;
+}
+
+.avatar-contenedor {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: var(--bg-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-24);
+  /* El secreto del Avatar Cyberpunk: Glow interior y exterior */
+  border: 2px solid var(--neon-cyan);
+  box-shadow: 0 0 30px var(--neon-glow), inset 0 0 20px var(--neon-glow);
+}
+
+.avatar-texto {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-blanco);
+}
+
+.titulo-principal {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-8);
+}
+
+.subtitulo-maquina {
+  font-size: 1.5rem;
+  color: var(--text-gris);
+  font-weight: 400;
+  margin-bottom: var(--space-24);
+}
+
+.descripcion-hero {
+  color: var(--text-gris);
+  max-width: 65ch;
+  margin-bottom: var(--space-48);
+  line-height: 1.6;
+}
+
+/* Botones */
+.grupo-botones {
+  display: flex;
+  gap: var(--space-24);
+}
+
+.btn {
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 99px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-cyan-solido {
+  background-color: var(--neon-cyan);
+  color: var(--bg-exterior);
+  box-shadow: 0 0 20px var(--neon-glow);
+}
+
+.btn-cyan-solido:hover {
+  box-shadow: 0 0 35px var(--neon-cyan);
+  transform: translateY(-3px);
+}
+
+.btn-cyan-borde {
+  background-color: transparent;
+  color: var(--text-blanco);
+  border: 2px solid var(--neon-cyan);
+}
+
+.btn-cyan-borde:hover {
+  background-color: hsla(190, 100%, 50%, 0.1);
+  box-shadow: 0 0 20px var(--neon-glow);
+  transform: translateY(-3px);
+}
+
+/* =========================================
+   6. SECCIÓN: SKILLS (Barras de Progreso)
+   ========================================= */
+.lista-skills {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  width: 100%;
+  max-width: 600px;
+  align-self: center;
+}
+
+.info-skill {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+  font-weight: 600;
+}
+
+.porcentaje-skill {
+  color: var(--neon-cyan);
+}
+
+.barra-fondo {
+  width: 100%;
+  height: 10px;
+  background-color: var(--bg-input);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.barra-progreso {
+  height: 100%;
+  background-color: var(--neon-cyan);
+  border-radius: 99px;
+  width: 0%; /* Inicia en 0 para la animación con JS */
+  box-shadow: 0 0 15px var(--neon-cyan); /* La barra emite luz */
+  transition: width 1.5s cubic-bezier(0.1, 0.5, 0.1, 1); /* Transición suave */
+}
+
+/* =========================================
+   7. SECCIÓN: PORTAFOLIO (Tarjetas)
+   ========================================= */
+.grid-proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-32);
+}
+
+.tarjeta-proyecto {
+  background-color: var(--bg-input);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tarjeta-proyecto:hover {
+  border-color: var(--neon-cyan);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px var(--neon-glow);
+}
+
+.imagen-proyecto {
+  height: 200px;
+  background-color: hsl(220, 30%, 12%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-gris);
+  font-family: monospace;
+}
+
+.contenido-proyecto {
+  padding: var(--space-24);
+}
+
+.etiqueta-estado {
+  color: var(--neon-cyan);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-8);
+  display: block;
+}
+
+.titulo-proyecto {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-8);
+}
+
+.texto-proyecto {
+  color: var(--text-gris);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-16);
+  line-height: 1.5;
+}
+
+.contenedor-tags {
+  display: flex;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: var(--bg-panel);
+  border: 1px solid hsla(190, 100%, 50%, 0.3);
+  color: var(--text-blanco);
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+}
+
+/* =========================================
+   8. SECCIÓN: CONTACTO (Formulario)
+   ========================================= */
+#formulario-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  width: 100%;
+  max-width: 600px;
+  align-self: center;
+}
+
+.grupo-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-24);
+}
+
+input, textarea {
+  width: 100%;
+  background-color: var(--bg-input);
+  border: 1px solid transparent;
+  color: var(--text-blanco);
+  font-family: 'Poppins', sans-serif;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+input::placeholder, textarea::placeholder {
+  color: hsla(215, 20%, 70%, 0.5);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 15px var(--neon-glow);
+  background-color: var(--bg-panel);
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Responsividad Básica */
+@media (max-width: 768px) {
+  #sidebar {
+    top: auto;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .nav-menu {
+    flex-direction: row;
+    padding: var(--space-8) var(--space-24);
+  }
+  
+  #main-content {
+    margin-left: 0;
+    padding-bottom: 100px; /* Espacio para el menú inferior */
+  }
+
+  .grupo-inputs {
+    grid-template-columns: 1fr;
+  }
+  
+  .titulo-principal {
+    font-size: 2.5rem;
+  }
+}

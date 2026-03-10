@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magia HSL vs Caos HEX</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="pantalla-dividida">
+      <section class="panel panel-malo">
+        <h2>❌ Hardcodeo en HEX</h2>
+        <p>4 códigos distintos. Cero escalabilidad.</p>
+
+        <div class="componentes">
+          <button class="btn-hex">Botón Principal</button>
+          <span class="tag-hex">Nuevo Feature</span>
+
+          <div class="caja-codigo">
+            <div class="linea-codigo"><span class="comentario">/* Valores sin relación */</span></div>
+            <div class="linea-codigo">bg-btn: <span class="hex">#3b82f6</span>;</div>
+            <div class="linea-codigo">hover:  <span class="hex">#1e40af</span>;</div>
+            <div class="linea-codigo">bg-tag: <span class="hex">#1e3a8a</span>;</div>
+            <div class="linea-codigo">tx-tag: <span class="hex">#bfdbfe</span>;</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel-bueno">
+        <h2>✅ Matemática en HSL</h2>
+        <p>1 sola variable base. Infinitas variaciones.</p>
+
+        <div class="componentes">
+          <button class="btn-hsl">Botón Principal</button>
+          <span class="tag-hsl">Nuevo Feature</span>
+
+          <div class="caja-codigo">
+            <div class="linea-codigo"><span class="comentario">/* Variables estáticas */</span></div>
+            <div class="linea-codigo">--h: <span class="hsl-val">217</span>; --s: <span class="hsl-val">90%</span>;</div>
+            <br>
+            <div class="linea-codigo"><span class="comentario">/* Matemática de Luz (L) */</span></div>
+            <div class="linea-codigo">bg-btn: hsl(h, s, <span class="luz">60%</span>);</div>
+            <div class="linea-codigo">hover:  hsl(h, s, <span class="luz">50%</span>); <span class="comentario">/* -10% */</span></div>
+            <div class="linea-codigo">bg-tag: hsl(h, s, <span class="luz">20%</span>);</div>
+            <div class="linea-codigo">tx-tag: hsl(h, s, <span class="luz">85%</span>);</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

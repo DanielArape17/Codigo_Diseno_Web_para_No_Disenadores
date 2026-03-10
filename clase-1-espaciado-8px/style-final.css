@@ -1,0 +1,299 @@
+/* =========================================
+  BASE Y LAYOUT
+========================================= */
+
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+  CONTROLES PREMIUM (TOGGLE SWITCH)
+========================================= */
+
+.controles {
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #1e293b;
+}
+
+.toggle-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  background-color: #1e293b;
+  padding: 12px 24px;
+  border-radius: 99px;
+  border: 1px solid #334155;
+  transition: all 0.3s ease;
+}
+
+.toggle-container:hover {
+  border-color: #475569;
+  background-color: #273549;
+}
+
+.toggle-label {
+  font-family: "Fira Code", monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #94a3b8;
+  transition: color 0.3s ease;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0f172a;
+  border: 2px solid #334155;
+  border-radius: 34px;
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #94a3b8;
+  border-radius: 50%;
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:checked + .slider {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+  background-color: #ffffff;
+}
+
+.rayos-x-activos .toggle-container {
+  border-color: #ef4444;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.1);
+}
+
+/* =========================================
+  PANELES (PANTALLA DIVIDIDA)
+========================================= */
+
+.pantalla-dividida {
+  display: flex;
+  flex: 1;
+}
+
+.panel {
+  flex: 1;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.panel:first-child {
+  border-right: 1px solid #1e293b;
+}
+.panel h2 {
+  margin: 0 0 8px 0;
+}
+.subtitulo {
+  color: #94a3b8;
+  margin: 0 0 48px 0;
+}
+
+/* =========================================
+  ❌ LADO MALO: SIN SISTEMA
+========================================= */
+
+.tarjeta-mala {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  width: 300px;
+  padding: 27px; /* Padding aleatorio */
+}
+
+/* Elementos con márgenes inventados e inestables */
+.tm-titulo {
+  margin: 0 0 13px 0;
+  position: relative;
+}
+.tm-desc {
+  margin: 0 0 37px 0;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  position: relative;
+}
+.tm-precio {
+  margin: 0 0 21px 0;
+  font-size: 2rem;
+  font-weight: bold;
+  position: relative;
+}
+.mes {
+  font-size: 1rem;
+  color: #64748b;
+  font-weight: normal;
+}
+
+.btn-malo {
+  background-color: #334155;
+  color: white;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* =========================================
+  ✅ LADO BUENO: EL SISTEMA DE 8PX
+========================================= */
+
+:root {
+  --space-8: 8px; /* Agrupar textos (Título y Desc) */
+  --space-24: 24px; /* Separación media (Desc a Precio) */
+  --space-32: 32px; /* Separación de bloque (Precio a Botón / Padding) */
+}
+
+.tarjeta-buena {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  width: 300px;
+  padding: var(--space-32); /* Padding estricto */
+}
+
+/* Elementos respetando la escala matemática */
+.tb-titulo {
+  margin: 0 0 var(--space-8) 0;
+  position: relative;
+}
+.tb-desc {
+  margin: 0 0 var(--space-24) 0;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  position: relative;
+}
+.tb-precio {
+  margin: 0 0 var(--space-32) 0;
+  font-size: 2rem;
+  font-weight: bold;
+  position: relative;
+}
+
+.btn-bueno {
+  background-color: #38bdf8;
+  color: #0f172a;
+  width: 100%;
+  font-weight: bold;
+  padding: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* =========================================
+  🔍 LA MAGIA: EL MODO RAYOS X
+========================================= */
+
+/* Solo se activa si el body tiene la clase 'rayos-x-activos' */
+
+/* 1. Dibujamos los márgenes de la tarjeta mala (Rojo) */
+.rayos-x-activos .tm-titulo::after,
+.rayos-x-activos .tm-desc::after,
+.rayos-x-activos .tm-precio::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-color: rgba(239, 68, 68, 0.2); /* Fondo rojo transparente */
+  border: 1px dashed #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f87171;
+  font-family: "Fira Code", monospace;
+  font-size: 10px;
+}
+
+/* Medidas exactas inyectadas para la tarjeta mala */
+.rayos-x-activos .tm-titulo::after {
+  top: 100%;
+  height: 13px;
+  content: "13px";
+}
+.rayos-x-activos .tm-desc::after {
+  top: 100%;
+  height: 37px;
+  content: "37px";
+}
+.rayos-x-activos .tm-precio::after {
+  top: 100%;
+  height: 21px;
+  content: "21px";
+}
+
+/* 2. Dibujamos los márgenes de la tarjeta buena (Verde) */
+.rayos-x-activos .tb-titulo::after,
+.rayos-x-activos .tb-desc::after,
+.rayos-x-activos .tb-precio::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-color: rgba(34, 197, 94, 0.2); /* Fondo verde transparente */
+  border: 1px dashed #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4ade80;
+  font-family: "Fira Code", monospace;
+  font-size: 10px;
+}
+
+/* Medidas exactas inyectadas para la tarjeta buena */
+.rayos-x-activos .tb-titulo::after {
+  top: 100%;
+  height: var(--space-8);
+  content: "8px";
+}
+.rayos-x-activos .tb-desc::after {
+  top: 100%;
+  height: var(--space-24);
+  content: "24px";
+}
+.rayos-x-activos .tb-precio::after {
+  top: 100%;
+  height: var(--space-32);
+  content: "32px";
+}

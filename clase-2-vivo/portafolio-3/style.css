@@ -1,0 +1,25 @@
+:root {
+  /* TEMA 3: CYBERPUNK / TECH */
+  --bg-fondo: hsl(220, 50%, 8%); /* Azul marino intensamente oscuro */
+  --texto-principal: hsl(0, 0%, 100%);
+  --texto-secundario: hsl(215, 20%, 75%);
+  --color-acento: hsl(190, 100%, 50%); /* Cyan brillante (Neón) */
+}
+h1 {
+  /* Añadimos el Glow en vivo solo para esta opción */
+  text-shadow: 0 0 15px hsla(190, 100%, 50%, 0.5); 
+}
+
+body {
+  background-color: var(--bg-fondo);
+  color: var(--texto-principal);
+  font-family: sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Transición suave para el efecto "Wow" */
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 { color: var(--color-acento); } /* El título llevará el color de la marca */
+p { color: var(--texto-secundario); max-width: 50ch; font-size: 1.2rem; line-height: 1.6; }

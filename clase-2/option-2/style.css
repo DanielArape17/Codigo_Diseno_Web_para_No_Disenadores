@@ -1,0 +1,659 @@
+/* =========================================
+   VARIABLES "GEROLD THEME" (Morado Neón)
+   ========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Outfit:wght@300;400;600;800&display=swap");
+
+:root {
+  /* Tono Morado/Violeta (Gerold Vibe) */
+  --h-marca: 270;
+  --s-marca: 80%;
+  --l-marca: 60%;
+  --brand-color: hsl(var(--h-marca), var(--s-marca), var(--l-marca));
+  --brand-glow: hsla(270, 80%, 60%, 0.15); /* Luz ambiental */
+
+  /* Fondo ultra oscuro (Casi negro con tinte morado) */
+  --bg-base: hsl(270, 40%, 4%);
+  --bg-card: hsl(270, 30%, 8%);
+  --border-color: hsla(270, 40%, 80%, 0.1);
+
+  /* Textos */
+  --text-main: hsl(0, 0%, 98%);
+  --text-muted: hsl(270, 10%, 65%);
+
+  /* Sistema de 8px */
+  --space-8: 0.5rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --space-64: 4rem;
+  --space-80: 5rem;
+}
+
+/* =========================================
+   RESET Y FONDOS
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family: "Outfit", sans-serif; /* Fuente redonda y moderna */
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-24);
+  position: relative;
+  z-index: 2; /* Para que quede encima de las luces */
+}
+
+/* --- TÁCTICA: LUCES AMBIENTALES (GLOWS) --- */
+.glow-bg {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background-color: var(--brand-glow);
+  border-radius: 50%;
+  filter: blur(120px); /* Esto hace que parezca luz y no un círculo */
+  z-index: 0;
+  pointer-events: none;
+}
+.glow-top {
+  top: -200px;
+  right: -100px;
+}
+.glow-bottom {
+  bottom: -200px;
+  left: -200px;
+}
+
+/* =========================================
+   1. HEADER
+   ========================================= */
+.navbar {
+  padding: var(--space-24) 0;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-main);
+}
+.logo-text {
+  font-family: "Fira Code", monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-32);
+}
+.link-ghost {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 400;
+  transition: color 0.3s;
+}
+.link-ghost:hover {
+  color: var(--brand-color);
+}
+
+.btn-cta {
+  background-color: var(--brand-color);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 99px;
+  transition: 0.3s;
+}
+.btn-cta:hover {
+  background-color: hsl(var(--h-marca), var(--s-marca), 50%);
+}
+
+/* =========================================
+   2. HERO (2 Columnas Gerold)
+   ========================================= */
+.hero {
+  padding-top: var(--space-64);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-64);
+  align-items: center;
+  margin-bottom: var(--space-80);
+}
+
+.hero-greeting {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: var(--space-8);
+}
+.hero-title {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--space-24);
+}
+.text-gradient {
+  background: linear-gradient(90deg, var(--brand-color), hsl(290, 80%, 70%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-bio {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 50ch;
+  margin-bottom: var(--space-32);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+}
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: 1px solid var(--brand-color);
+  color: var(--brand-color);
+  padding: 14px 32px;
+  border-radius: 99px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn-primary:hover {
+  background-color: var(--brand-color);
+  color: white;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+.icon-circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-color);
+  transition: 0.3s;
+  text-decoration: none;
+}
+.icon-circle:hover {
+  background-color: var(--brand-color);
+  color: white;
+}
+
+/* Imagen Derecha */
+.hero-image-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.hero-image {
+  width: 400px;
+  height: 450px;
+  background-color: var(--bg-card);
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(3deg);
+  transition: 0.3s;
+}
+.hero-image:hover {
+  transform: rotate(0deg);
+  border-color: var(--brand-color);
+}
+
+/* Estadísticas debajo del Hero */
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-24);
+  padding-top: var(--space-64);
+  border-top: 1px solid var(--border-color);
+}
+.stat-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+.stat-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* =========================================
+   3. PROYECTOS (Tarjetas Premium)
+   ========================================= */
+.seccion-proyectos {
+  padding: var(--space-80) 0;
+}
+.titulo-centrado {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: var(--space-64);
+}
+
+.grid-proyectos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-32);
+}
+
+.tarjeta-proyecto {
+  background-color: var(--bg-card);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  transition: 0.3s;
+}
+.tarjeta-proyecto:hover {
+  border-color: var(--brand-color);
+  transform: translateY(-5px);
+}
+
+.tarjeta-imagen {
+  height: 250px;
+  background-color: var(--bg-base);
+  border-radius: 12px;
+  margin-bottom: var(--space-24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-family: "Fira Code", monospace;
+}
+.tarjeta-titulo {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+.tarjeta-desc {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.stack-tecnologico {
+  display: flex;
+  gap: 8px;
+}
+.tag-tech {
+  background-color: hsla(270, 80%, 60%, 0.1);
+  color: var(--brand-color);
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* =========================================
+   4. EXPERIENCIA Y EDUCACIÓN (Timeline)
+   ========================================= */
+.seccion-experiencia {
+  padding: var(--space-80) 0;
+  border-top: 1px solid var(--border-color); /* Línea divisoria sutil */
+}
+
+.grid-2-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-64);
+}
+
+.titulo-con-icono {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: var(--space-32);
+}
+
+.titulo-con-icono svg {
+  color: var(--brand-color); /* Icono de título iluminado */
+}
+
+.timeline-lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+/* Las tarjetas del Timeline */
+.timeline-card {
+  background-color: var(--bg-card);
+  padding: var(--space-24) var(--space-32);
+  border-radius: 20px;
+  border: 1px solid transparent; /* Transparente por defecto para no hacer salto visual en hover */
+  transition: all 0.3s ease;
+}
+
+.timeline-card:hover {
+  background-color: var(--bg-base); /* Se oscurece un poco al pasar el mouse */
+  border-color: var(--brand-color); /* Revela el borde de acento */
+  transform: translateX(8px); /* Microinteracción de deslizamiento */
+}
+
+.timeline-fecha {
+  display: block;
+  color: var(--brand-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.timeline-titulo {
+  color: var(--text-main);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.timeline-lugar {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* =========================================
+   5. SKILLS GRID
+   ========================================= */
+.seccion-skills {
+  padding: var(--space-80) 0;
+  background-color: hsla(270, 40%, 8%, 0.4); /* Fondo un tono diferente para separar secciones */
+}
+
+.encabezado-centrado {
+  text-align: center;
+  margin-bottom: var(--space-64);
+}
+
+.subtitulo-centrado {
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* El Grid de cuadritos */
+.grid-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-24);
+}
+
+/* Cada cuadrito de habilidad */
+.skill-card {
+  background-color: var(--bg-card);
+  border-radius: 24px; /* Forma de squircle (cuadrado muy redondo) */
+  padding: var(--space-32) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+  border-color: var(--brand-color);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px var(--brand-glow); /* Resplandor inferior en hover */
+}
+
+.skill-icon {
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.skill-card:hover .skill-icon {
+  color: var(--text-main); /* El icono se ilumina en hover */
+}
+
+.skill-pct {
+  color: var(--brand-color);
+  font-size: 1.5rem;
+  font-family: 'Fira Code', monospace; /* Tipografía técnica para los números */
+  font-weight: 700;
+}
+
+.skill-name {
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Responsividad para estas dos secciones */
+@media (max-width: 768px) {
+  .grid-2-columnas {
+    grid-template-columns: 1fr; /* Apila experiencia y educación en móviles */
+    gap: var(--space-48);
+  }
+}
+
+/* =========================================
+   6. SECCIÓN DE CONTACTO
+   ========================================= */
+.seccion-contacto {
+  padding: var(--space-80) 0;
+}
+
+.grid-contacto {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* El formulario ocupa un poco más de espacio */
+  gap: var(--space-64);
+  align-items: center;
+}
+
+/* Tarjeta del Formulario */
+.contacto-form-card {
+  background-color: var(--bg-card);
+  padding: var(--space-32) var(--space-32);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.titulo-contacto {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.subtitulo-contacto {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: var(--space-32);
+}
+
+/* Campos del Formulario */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+}
+
+.form-row:has(> .select-field),
+.form-row:has(> .textarea-field) {
+  grid-template-columns: 1fr; /* Selects y Textareas ocupan todo el ancho */
+}
+
+.input-field {
+  width: 100%;
+  background-color: var(--bg-base); /* Un fondo más oscuro que la tarjeta para dar profundidad */
+  border: 1px solid transparent;
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  padding: 16px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.input-field::placeholder {
+  color: hsla(270, 10%, 65%, 0.5); /* Placeholder súper sutil */
+}
+
+/* Microinteracción de Foco */
+.input-field:focus {
+  outline: none;
+  border-color: var(--brand-color);
+  box-shadow: 0 0 0 3px var(--brand-glow);
+}
+
+.select-field {
+  cursor: pointer;
+  appearance: none; /* Quita la flecha por defecto del SO */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem top 50%;
+  background-size: 0.65rem auto;
+}
+
+.textarea-field {
+  resize: vertical;
+}
+
+.btn-submit {
+  width: fit-content;
+  margin-top: var(--space-8);
+  border: none;
+  cursor: pointer;
+}
+
+/* Información de Contacto (Iconos Morados) */
+.contacto-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  padding-left: var(--space-32);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+.info-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--brand-color);
+  background: linear-gradient(135deg, var(--brand-color), hsl(290, 80%, 60%)); /* Gradiente Gerold */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px var(--brand-glow);
+  transition: transform 0.3s ease;
+}
+
+.info-item:hover .info-icon {
+  transform: scale(1.1);
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.info-valor {
+  color: var(--text-main);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
+.footer-gerold {
+  background-color: var(--bg-card); /* Destaca un poco sobre el fondo base */
+  padding: var(--space-32) 0;
+  margin-top: var(--space-80);
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+  text-align: center;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-32);
+}
+
+.copyright {
+  color: hsla(270, 10%, 65%, 0.5);
+  font-size: 0.9rem;
+}
+
+/* Responsividad para Formulario y Footer */
+@media (max-width: 768px) {
+  .grid-contacto {
+    grid-template-columns: 1fr;
+    gap: var(--space-48);
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr; /* Los inputs se apilan en móvil */
+  }
+
+  .contacto-info {
+    padding-left: 0;
+  }
+}

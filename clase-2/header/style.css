@@ -1,0 +1,493 @@
+/* =========================================
+   VARIABLES Y SISTEMAS (Clase 1)
+   ========================================= */
+:root {
+  /* Marca (HSL) */
+  --h-marca: 217;
+  --s-marca: 91%;
+  --l-marca: 60%;
+  --brand-color: hsl(var(--h-marca), var(--s-marca), var(--l-marca));
+
+  /* Escala de Grises (Slate) */
+  --bg-dark:    hsl(222, 47%, 11%);
+  --text-main:  hsl(210, 40%, 98%);
+  --text-muted: hsl(215, 20%, 65%); /* Color grisáceo para jerarquía */
+
+  /* Sistema de Espaciado de 8px */
+  --space-8:  0.5rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --space-64: 4rem;
+  --space-80: 5rem;
+}
+
+/* =========================================
+   RESET Y BASE
+   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-24);
+}
+
+/* =========================================
+   1. HEADER STYLES
+   ========================================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-24) var(--space-64);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: hsla(222, 47%, 11%, 0.8);
+  backdrop-filter: blur(12px); /* Efecto cristal moderno */
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Fira Code', monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -1px;
+}
+
+.dot { color: var(--brand-color); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-32);
+}
+
+.link-ghost {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.link-ghost:hover { color: var(--text-main); }
+
+.btn-cta {
+  text-decoration: none;
+  background-color: var(--brand-color);
+  color: white;
+  padding: var(--space-8) var(--space-16);
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.btn-cta:hover {
+  background-color: hsl(var(--h-marca), var(--s-marca), 50%);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   2. HERO STYLES
+   ========================================= */
+.hero {
+  padding-top: var(--space-80);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Tag/Badge de Estado (Matemática HSL) */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  background-color: hsl(142, 76%, 10%); /* Fondo verde muy oscuro */
+  color: hsl(142, 76%, 70%);            /* Texto verde claro */
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid hsl(142, 76%, 20%);
+  margin-bottom: var(--space-24);
+}
+
+.dot-online {
+  width: 8px;
+  height: 8px;
+  background-color: hsl(142, 76%, 50%);
+  border-radius: 50%;
+  box-shadow: 0 0 10px hsl(142, 76%, 50%);
+}
+
+/* Título Principal (Jerarquía de 3.05rem) */
+.hero-title {
+  font-size: 3.05rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-24);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--brand-color), hsl(190, 90%, 60%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Biografía (Jerarquía Tipográfica Avanzada) */
+.hero-bio {
+  color: var(--text-muted); /* Color gris para no competir con el título */
+  font-size: 1.125rem;
+  max-width: 65ch; /* Ley de legibilidad */
+  margin-bottom: var(--space-32);
+}
+
+/* Grupo de Botones */
+.hero-actions {
+  display: flex;
+  gap: var(--space-16);
+}
+
+/* Táctica 7: Botón Primario vs Secundario */
+.btn-primary {
+  text-decoration: none;
+  background-color: var(--brand-color);
+  color: white;
+  padding: var(--space-16) var(--space-32);
+  border-radius: 8px;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: hsl(var(--h-marca), var(--s-marca), 50%);
+  box-shadow: 0 10px 20px -10px var(--brand-color);
+}
+
+.btn-secondary {
+  text-decoration: none;
+  background-color: transparent;
+  color: var(--text-main);
+  padding: var(--space-16) var(--space-32);
+  border-radius: 8px;
+  font-weight: 700;
+  border: 2px solid hsl(222, 47%, 25%);
+  transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-main);
+  background-color: hsla(0, 0%, 100%, 0.05);
+}
+
+/* =========================================
+   3. SECCIÓN DE PROYECTOS STYLES
+   ========================================= */
+
+.seccion-proyectos {
+  padding: var(--space-80) 0;
+}
+
+.titulo-seccion {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: var(--space-64); /* Gran separación para aislar el contenido */
+  color: var(--text-main);
+}
+
+.grid-proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-32); /* Espaciado masivo entre tarjetas */
+}
+
+/* TÁCTICA: Menos Bordes, Más Sombras 
+  Creamos una tarjeta premium sin usar el clásico `border: 1px solid black`
+*/
+.tarjeta-proyecto {
+  background-color: hsl(222, 47%, 13%); /* Un tono ligeramente más claro que el fondo */
+  border-radius: 12px;
+  overflow: hidden;
+  /* Sombra de elevación (Offset Shadow) simulando luz desde arriba */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  /* Un borde interno casi invisible para dar "crispness" (nitidez) */
+  border: 1px solid hsla(210, 40%, 98%, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-proyecto:hover {
+  transform: translateY(-8px); /* Efecto de levitación interactiva */
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* Área de la imagen */
+.tarjeta-imagen {
+  height: 200px;
+  background-color: hsl(222, 47%, 18%);
+  border-bottom: 1px solid hsla(210, 40%, 98%, 0.05);
+}
+
+.img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+}
+
+/* Cuerpo de la tarjeta */
+.tarjeta-cuerpo {
+  padding: var(--space-32); /* Respiro interno masivo */
+}
+
+.tarjeta-titulo {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-8);
+  color: var(--text-main);
+}
+
+.tarjeta-desc {
+  color: var(--text-muted); /* Jerarquía tipográfica: atenuado */
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: var(--space-24);
+}
+
+/* TÁCTICA: Affordance (Forma y Función)
+  Estos tags NO deben parecer botones. Cursor normal, sin hover, colores apagados.
+*/
+.stack-tecnologico {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-bottom: var(--space-32);
+}
+
+.tag-tech {
+  background-color: hsla(210, 40%, 98%, 0.05); /* Fondo muy sutil */
+  color: var(--text-muted);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: default; /* Indica al usuario que no es clickeable */
+}
+
+/* Enlaces de Acción (Ghost links con iconos) */
+.tarjeta-enlaces {
+  display: flex;
+  gap: var(--space-24);
+}
+
+.link-icono {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.link-icono:hover {
+  color: var(--brand-color); /* Se ilumina con el color de acento */
+}
+
+/* Táctica: Iconografía Proporcional */
+.link-icono svg {
+  /* El grosor del icono (stroke-width: 2) hace match visual con el font-weight: 600 */
+  opacity: 0.8;
+  transition: transform 0.2s ease;
+}
+
+.link-icono:hover svg {
+  transform: scale(1.1); /* Microinteracción premium */
+}
+
+/* =========================================
+   4. SECCIÓN SOBRE MÍ STYLES
+   ========================================= */
+
+.seccion-sobre-mi {
+  padding: var(--space-80) 0;
+  background-color: hsla(222, 47%, 13%, 0.4); /* Leve contraste con el fondo principal */
+  border-top: 1px solid hsla(210, 40%, 98%, 0.05);
+  border-bottom: 1px solid hsla(210, 40%, 98%, 0.05);
+}
+
+.layout-2-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-64); /* Separación masiva entre texto e iconos */
+  align-items: center;
+}
+
+/* Columna Izquierda (Bio) */
+.columna-texto .titulo-seccion {
+  margin-bottom: var(--space-24);
+}
+
+.bio-extendida p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-16);
+  max-width: 60ch; /* Ley de legibilidad */
+}
+
+/* Columna Derecha (Stack Tecnológico) */
+.subtitulo-stack {
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: var(--space-32);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.grid-tecnologias {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-24);
+}
+
+/* TÁCTICA: Iconografía Proporcional */
+.tech-item {
+  display: flex;
+  align-items: center; /* Alineación perfecta en el eje Y */
+  gap: var(--space-16);
+  padding: var(--space-16);
+  background-color: hsla(210, 40%, 98%, 0.03);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+  background-color: hsla(210, 40%, 98%, 0.08);
+  border-color: hsla(210, 40%, 98%, 0.1);
+  transform: translateX(4px); /* Microinteracción de desplazamiento */
+}
+
+.tech-icon {
+  width: 24px;  /* Tamaño fijo para todos los iconos */
+  height: 24px;
+  color: var(--brand-color); /* Unificamos el color para evitar el "efecto collage" */
+  flex-shrink: 0; /* Evita que el icono se aplaste si el texto es muy largo */
+  /* stroke-width: 2 ya está en el HTML, balanceando el peso tipográfico */
+}
+
+.tech-item span {
+  color: var(--text-main);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Responsive básico para la clase */
+@media (max-width: 768px) {
+  .layout-2-columnas {
+    grid-template-columns: 1fr;
+    gap: var(--space-32);
+  }
+}
+
+/* =========================================
+   5. FOOTER STYLES
+   ========================================= */
+
+.footer-cta {
+  padding: var(--space-80) 0 var(--space-32) 0;
+  background-color: var(--bg-dark); /* Mantenemos el fondo base para unificar */
+  text-align: center;
+  border-top: 1px solid hsla(210, 40%, 98%, 0.05);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px; /* Contenedor más estrecho para centrar la lectura */
+}
+
+/* Tipografía de Cierre (Jerarquía Máxima) */
+.titulo-gigante {
+  font-size: clamp(2.5rem, 5vw, 4rem); /* Texto fluido masivo */
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin-bottom: var(--space-16);
+  color: var(--text-main);
+}
+
+.subtitulo-footer {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-64); /* Gran espacio antes del botón */
+  max-width: 50ch;
+}
+
+/* TÁCTICA: Ley de Fitts (Botón XL) */
+.btn-primario-xl {
+  display: inline-block;
+  background-color: var(--brand-color);
+  color: white;
+  text-decoration: none;
+  font-size: 1.25rem; /* Texto más grande de lo normal */
+  font-weight: 700;
+  /* Padding masivo para aumentar el área de clic */
+  padding: var(--space-24) var(--space-64); 
+  border-radius: 99px; /* Píldora gigante */
+  margin-bottom: var(--space-64);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px -5px hsla(var(--h-marca), var(--s-marca), var(--l-marca), 0.4);
+}
+
+.btn-primario-xl:hover {
+  transform: translateY(-4px) scale(1.02); /* Microinteracción de crecimiento */
+  background-color: hsl(var(--h-marca), var(--s-marca), 50%); /* HSL Matemático */
+  box-shadow: 0 20px 35px -5px hsla(var(--h-marca), var(--s-marca), var(--l-marca), 0.6);
+}
+
+/* Redes Sociales (Jerarquía Secundaria) */
+.redes-sociales {
+  display: flex;
+  gap: var(--space-24);
+  margin-bottom: var(--space-32);
+}
+
+.icono-fantasma {
+  color: var(--text-muted); /* Totalmente apagado por defecto */
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+}
+
+.icono-fantasma:hover {
+  color: var(--text-main); /* Se enciende a blanco al pasar el mouse */
+  transform: translateY(-4px);
+}
+
+/* Copyright */
+.copyright {
+  font-family: 'Fira Code', monospace;
+  color: hsla(215, 20%, 65%, 0.5); /* Gris muy transparente */
+  font-size: 0.8rem;
+  margin-top: var(--space-32);
+}

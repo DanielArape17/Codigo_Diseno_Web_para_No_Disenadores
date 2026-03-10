@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rayos X: El Sistema de 8px</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style-final.css" />
+  </head>
+  <body>
+    <div class="controles">
+      <label class="toggle-container">
+        <span class="toggle-label" id="texto-toggle">🔍 Activar detector</span>
+        <div class="toggle-switch">
+          <input type="checkbox" id="checkbox-rayos-x" />
+          <span class="slider"></span>
+        </div>
+      </label>
+    </div>
+
+    <main class="pantalla-dividida">
+      <section class="panel">
+        <h2>❌ Márgenes Aleatorios</h2>
+        <p class="subtitulo">Inestable y ruidoso.</p>
+
+        <article class="tarjeta tarjeta-mala">
+          <h3 class="tm-titulo">Plan Básico</h3>
+          <p class="tm-desc">Acceso limitado a los cursos por un mes.</p>
+          <div class="tm-precio">$15 <span class="mes">/mes</span></div>
+          <button class="btn-malo">Suscribirse</button>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>✅ Sistema de 8px</h2>
+        <p class="subtitulo">Ritmo visual perfecto.</p>
+
+        <article class="tarjeta tarjeta-buena">
+          <h3 class="tb-titulo">Plan Premium</h3>
+          <p class="tb-desc">Acceso ilimitado y soporte 24/7.</p>
+          <div class="tb-precio">$49 <span class="mes">/mes</span></div>
+          <button class="btn-bueno">Suscribirse</button>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      const checkbox = document.getElementById("checkbox-rayos-x");
+      const textoToggle = document.getElementById("texto-toggle");
+
+      checkbox.addEventListener("change", (e) => {
+        if (e.target.checked) {
+          // Encendido
+          document.body.classList.add("rayos-x-activos");
+          textoToggle.innerHTML = "🛑 Desactivar detector";
+          textoToggle.style.color = "#f8fafc"; // Texto brillante al encender
+        } else {
+          // Apagado
+          document.body.classList.remove("rayos-x-activos");
+          textoToggle.innerHTML = "🔍 Activar detector";
+          textoToggle.style.color = "#94a3b8"; // Texto apagado al apagar
+        }
+      });
+    </script>
+  </body>
+</html>
