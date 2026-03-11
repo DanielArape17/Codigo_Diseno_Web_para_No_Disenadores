@@ -1,0 +1,77 @@
+.navbar {
+  display: flex;
+  justify-content: space-between; /* El truco del Layout en Z */
+  align-items: center;
+  padding: var(--space-16) var(--space-24); 
+  box-sizing: border-box; 
+  /* Fijamos el menú inteligentemente */
+  position: sticky; 
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  
+  /* Efecto Cristal Esmerilado (Glassmorphism) */
+  background-color: hsla(222, 47%, 11%, 0.8);
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px); 
+}
+
+.logo {
+  font-family: 'Fira Code', monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -1px;
+  color: var(--text-main);
+}
+
+.dot { color: var(--brand-color); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-32); 
+}
+
+.link-ghost {
+  text-decoration: none;
+  color: var(--text-muted); /* Totalmente apagado */
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.link-ghost:hover { color: var(--text-main); } /* Se enciende a blanco */
+
+.btn-cta {
+  text-decoration: none;
+  background-color: var(--brand-color);
+  color: white;
+  padding: var(--space-8) var(--space-16);
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.btn-cta:hover {
+  background-color: hsl(var(--h-marca), var(--s-marca), 50%); /* HSL dinámico */
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+  RESPONSIVE NAVBAR
+========================================= */
+@media (max-width: 768px) {
+  .link-ghost { display: none; }
+  .btn-cta { font-size: 0.8rem; padding: 8px 16px; }
+  .logo { font-size: 1rem; }
+}
+
+/*RESPONSIVE COMPUTADORAS: Le damos más espacio lateral */
+@media (min-width: 769px) {
+  .navbar {
+    /* En PC, le damos los 64px de espacio a los lados para que se alinee con el resto de la página */
+    padding: var(--space-16) var(--space-64);
+  }
+}
