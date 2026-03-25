@@ -2,7 +2,6 @@
   2. HERO STYLES
 ========================================= */
 .hero {
-  padding-top: var(--space-64);
   min-height: 90vh; /* Ocupa casi toda la pantalla */
   display: flex;
   flex-direction: column;

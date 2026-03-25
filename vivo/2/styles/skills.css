@@ -1,0 +1,164 @@
+/* =========================================
+   5. SKILLS (Opción 2 - Barras Analíticas)
+========================================= */
+.seccion-skills {
+  padding: var(--space-64);
+  font-family: 'Manrope', sans-serif;
+}
+
+.encabezado-centrado {
+  text-align: center;
+  color: var(--text-main);
+  margin-bottom: var(--space-16);
+  font-family: 'Fraunces', serif; /* Título Premium */
+  font-size: var(--text-3xl); /* Usamos la escala tipográfica */
+}
+
+.subtitulo-centrado {
+  text-align: center;
+  color: var(--text-muted);
+  max-width: 60ch;
+  margin: 0 auto var(--space-64) auto;
+  line-height: 1.6;
+}
+
+/* El Contenedor de la Lista */
+.skills-lista-avanzada {
+  list-style: none; /* Quitamos los puntitos de la lista */
+  max-width: 800px; /* Limitamos el ancho para que no se vea como una línea infinita */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24); /* Espacio entre cada fila */
+}
+
+/* 💡 Táctica: Layout de Fila Perfecta */
+.skill-item-avanzado {
+  display: flex;
+  align-items: center;
+  background-color: hsla(var(--h-marca), var(--s-marca), var(--l-marca), 0.03);
+  justify-content: space-between; /* Empuja info a la izq y meter a la der */
+  gap: var(--space-32);
+  padding: var(--space-16);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+/* --- BLOQUE IZQUIERDO (INFO) --- */
+.skill-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  flex-shrink: 0; /* Evita que el nombre se aplaste */
+}
+
+/* Iconos proporcionales al texto */
+.skill-icon {
+  width: var(--text-lg); /* 1.777rem (hace match visual con el nombre) */
+  height: var(--text-lg);
+  color: var(--brand-color); /* Nace morado neón */
+}
+
+.skill-name {
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: var(--text-lg); /* Usamos la escala (Perfect Fourth) */
+}
+
+/* --- BLOQUE DERECHO (MEDIDOR) --- */
+.skill-meter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-24);
+  width: 100%; /* Ocupa el espacio disponible */
+  max-width: 400px; /* Evita que las barras sean infinitas */
+}
+
+/* La línea gris base */
+.skill-bar-track {
+  width: 100%;
+  height: 8px; /* Altura sutil */
+  background-color: var(--border-color); /* hsl(270, 40%, 80%, 0.1) */
+  border-radius: 99px; /* Píldora perfecta */
+  overflow: hidden; /* Corta el fill si se sale */
+}
+
+/* El relleno morado brillante (Simula el progreso) */
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--brand-color), hsl(290, 80%, 70%));
+  
+  /* 💡 Táctica de Animación: La barra nace en 0 ancho y se llena */
+  animation: fillBar 1.5s ease-out forwards;
+}
+
+/* El porcentaje técnico */
+.skill-percentage {
+  color: var(--text-muted);
+  font-family: 'Fira Code', monospace; /* Tipografía técnica */
+  font-weight: 700;
+  font-size: var(--text-base);
+  width: 50px; /* Ancho fijo para que no bailen los números */
+  text-align: right;
+}
+
+/* 🎥 Keyframe para la animación de carga */
+@keyframes fillBar {
+  from { width: 0; }
+  /* to { width: inherit; } No funciona bien inline-style, mejor dejarlo cargado por defecto y animar en hover o carga inicial */
+}
+
+/* --- MICROINTERACCIÓN --- */
+
+/* Encendemos la fila entera con luz morada suave */
+.skill-item-avanzado:hover {
+  background-color: hsla(var(--h-marca), var(--s-marca), 80%, 0.05); /* Un tinte morado casi invisible */
+  box-shadow: 0 5px 15px var(--brand-glow);
+}
+
+/* =========================================
+  RESPONSIVE SKILLS BARRAS (MÓVILES)
+========================================= */
+@media (max-width: 768px) {
+  
+  /* 1.nPADDING */
+  .seccion-skills {
+    padding: var(--space-32) var(--space-16);
+  }
+
+  /* 2. Achicamos el título para que no se asfixie */
+  .encabezado-centrado {
+    font-size: 2rem; 
+    margin-bottom: var(--space-24);
+  }
+
+  /* 3. LA MAGIA: Pasamos de horizontal a vertical */
+  .skill-item-avanzado {
+    flex-direction: column; 
+    align-items: stretch; /* Obliga a los elementos hijos a estirarse de lado a lado */
+    gap: var(--space-16);
+    padding: var(--space-24); /* Un poco más de espacio interno para que respire */
+  }
+
+  /* 4. Ajustamos la información de la izquierda (que ahora estará arriba) */
+  .skill-info {
+    /* Nos aseguramos de que el icono y texto queden bien alineados */
+    justify-content: flex-start; 
+  }
+
+  /* 5. Reducimos ligeramente los textos y el icono */
+  .skill-name {
+    font-size: var(--text-md); /* Bajamos un escalón tipográfico */
+  }
+  
+  .skill-icon {
+    width: var(--text-md);
+    height: var(--text-md);
+  }
+
+  /* 6. La barra de progreso ahora ocupa TODO el ancho de la tarjeta */
+  .skill-meter-wrapper {
+    max-width: 100%; 
+  }
+}

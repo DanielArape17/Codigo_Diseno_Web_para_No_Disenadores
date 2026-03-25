@@ -1,13 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Outfit:wght@300;400;600;800&display=swap");
 
 :root {
-  /* Tono Morado/Violeta (Gerold Vibe) */
+  /* TEMA 2: PREMIUM / AGENCIA */
+  
+  /* 1. Separamos el HSL para la matemática del color */
   --h-marca: 270;
   --s-marca: 80%;
   --l-marca: 60%;
   --brand-color: hsl(var(--h-marca), var(--s-marca), var(--l-marca));
   --brand-glow: hsla(270, 80%, 60%, 0.15); /* Luz ambiental*/
 
+  /* 2. Colores de fondo y texto */
+  
   /* Fondo ultra oscuro (Casi negro con tinte morado) */
   --bg-base: hsl(270, 40%, 4%);
   --bg-card: hsl(270, 30%, 8%);
@@ -17,7 +21,7 @@
   --text-main: hsl(0, 0%, 95%);
   --text-muted: hsl(270, 10%, 65%);
 
-  /* Sistema de 8px */
+  /* 3. Sistema de 8px */
   --space-8: 0.5rem;
   --space-16: 1rem;
   --space-24: 1.5rem;

@@ -1,0 +1,124 @@
+/* =========================================
+  6. EXPERIENCIA Y EDUCACIÓN (Tarjetas)
+========================================= */
+.seccion-experiencia {
+  padding: var(--space-64);
+  border-top: 1px solid var(--border-color); 
+}
+
+.grid-2-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-64);
+}
+
+.titulo-con-icono {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  color: var(--text-main);
+  margin-bottom: var(--space-32);
+  font-family: 'Fraunces', serif;
+  font-size: var(--text-2xl); 
+}
+
+.titulo-con-icono svg {
+  color: var(--brand-color);
+}
+
+/* Espaciado entre las tarjetas */
+.lista-tarjetas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+/* 💡 TÁCTICA: La Tarjeta Apilada */
+.cv-card {
+  background-color: var(--bg-card); /* Nuestro morado oscuro */
+  padding: var(--space-24) var(--space-32);
+  border-radius: 16px;
+  
+  /* El truco visual: Un borde izquierdo grueso y apagado */
+  border-left: 4px solid var(--border-color);
+  
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+/* --- TEXTOS DE LA TARJETA --- */
+.cv-fecha {
+  display: block; /* Para que ocupe su propia línea */
+  color: var(--brand-color);
+  font-family: 'Fira Code', monospace;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-8);
+  letter-spacing: 0.5px;
+}
+
+.cv-titulo {
+  color: var(--text-main);
+  font-size: var(--text-lg); /* 1.777rem */
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.cv-lugar {
+  color: var(--text-muted);
+  font-size: var(--text-base); /* 1rem */
+}
+
+/* --- MICROINTERACCIÓN DE NEÓN --- */
+.cv-card:hover {
+  transform: translateX(8px); /* Deslizamiento horizontal */
+  
+  /* Encendemos el borde izquierdo */
+  border-left-color: var(--brand-color); 
+  
+  /* Iluminamos sutilmente el fondo */
+  background-color: hsla(270, 80%, 60%, 0.05);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .grid-2-columnas {
+    grid-template-columns: 1fr; /* Una sola columna en móviles */
+    gap: var(--space-48);
+  }
+}
+
+/* =========================================
+  RESPONSIVE EXPERIENCIA (MÓVILES)
+========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. Reducimos el padding gigante de la sección */
+  .seccion-experiencia {
+    padding: var(--space-32) var(--space-16);
+  }
+
+  /* 2. Apilamos Experiencia sobre Educación */
+  .grid-2-columnas {
+    grid-template-columns: 1fr; 
+    gap: var(--space-48);
+  }
+
+  /* 3. Achicamos los títulos de "Experiencia" y "Educación" */
+  .titulo-con-icono {
+    font-size: 1.8rem; /* Bajamos de tu variable --text-2xl que era muy grande */
+    margin: var(--space-24) 0;
+  }
+
+  /* 4. LA MAGIA: Rescatamos espacio dentro de la tarjeta */
+  .cv-card {
+    /* Reducimos el padding lateral de 32px a 20px para que el texto respire */
+    padding: var(--space-16) var(--space-24); 
+  }
+
+  /* 5. Ajustamos el título del cargo laboral */
+  .cv-titulo {
+    font-size: 1.25rem; /* Evita que cargos largos rompan la pantalla */
+  }
+}

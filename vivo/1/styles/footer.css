@@ -1,0 +1,132 @@
+/* =========================================
+   8. FOOTER PREMIUM (Ley de Fitts)
+========================================= */
+.footer-premium {
+  background-color: var(--bg-card); 
+  padding: var(--space-16) var(--space-64);
+  margin-top: var(--space-64);
+}
+
+.cta-masivo-wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--space-64);
+}
+
+/* Tipografía fluida */
+.cta-gigante {
+  font-size: clamp(2.5rem, 5vw, 4.5rem); /* El texto escala fluidamente con la pantalla (5vw), con un mínimo de 2.5rem y un máximo de 4.5rem */
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+  margin-bottom: var(--space-24);
+  letter-spacing: -1px;
+}
+
+.cta-subtitulo {
+  color: var(--text-muted);
+  font-size: var(--text-md);
+  max-width: 50ch;
+  margin-bottom: var(--space-32);
+}
+
+/* --- LA LEY DE FITTS EN ACCIÓN --- */
+.btn-masivo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-16);
+  margin-top: var(--space-32);
+
+  /* Área de clic GIGANTE */
+  padding: 24px 56px; 
+  border-radius: 99px; /* Forma de píldora extrema */
+  
+  background-color: var(--brand-color);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: var(--text-lg);  /* Texto masivo */
+  font-weight: 700;
+  
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px var(--brand-glow);
+}
+
+.btn-masivo:hover {
+  transform: translateY(-8px) scale(1.02); 
+  background-color: hsl(var(--h-marca), var(--s-marca), 55%);
+  box-shadow: 0 20px 40px var(--brand-glow);
+}
+
+/* Animación de la flecha en Hover */
+.btn-masivo svg {
+  transition: transform 0.3s ease;
+}
+
+.btn-masivo:hover svg {
+  transform: translateX(8px); 
+}
+
+/* --- BASE DEL FOOTER --- */
+.divisor-footer {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin-bottom: var(--space-32);
+}
+
+.footer-base {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Seguro de vida responsivo */
+  gap: var(--space-16);
+}
+
+.copyright {
+  color: var(--text-muted);
+  font-size: var(--text-base);
+}
+
+.footer-enlaces {
+  display: flex;
+  gap: var(--space-24);
+}
+
+.link-footer {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: var(--text-base);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.link-footer:hover {
+  color: var(--brand-color); 
+}
+
+/* =========================================
+  RESPONSIVE FOOTER (MÓVILES)
+========================================= */
+@media (max-width: 768px) {
+  
+  .footer-premium {
+    padding-top: var(--space-32);
+  }
+
+  /* El botón de conversión ocupa el 100% de la pantalla para el pulgar */
+  .btn-masivo {
+    width: 100%;
+    box-sizing: border-box; /* Previene el bug del scroll horizontal */
+    padding: 20px 24px;
+    font-size: 1.25rem;
+  }
+
+  /* Centramos la base legal y los enlaces */
+  .footer-base {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-24);
+  }
+}
